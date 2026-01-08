@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>WinGetUI</AssemblyName>
+    <RootNamespace>WinGetUI</RootNamespace>
+    <Version>2.0.0</Version>
+    <Authors>WinGetUI Team</Authors>
+    <Description>A modern GUI for Windows Package Manager (winget)</Description>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Assets\winget_logo.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\winget_logo.png" />
+    <Resource Include="Assets\winget_logo.ico" />
+  </ItemGroup>
+
+</Project>

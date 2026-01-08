@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="WinGetUI.Views.SearchView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WinGetUI.Views">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Search Packages" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+        
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="SearchBox" Width="300" VerticalAlignment="Center" Margin="0,0,10,0" KeyDown="SearchBox_KeyDown" Padding="8"/>
+            <ComboBox x:Name="FilterCombo" SelectedIndex="2" Width="120" VerticalAlignment="Center" Margin="0,0,10,0">
+                <ComboBoxItem>Search by Name</ComboBoxItem>
+                <ComboBoxItem>Search by ID</ComboBoxItem>
+                <ComboBoxItem>Search by Both</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="MatchCombo" SelectedIndex="0" Width="120" VerticalAlignment="Center" Margin="0,0,10,0">
+                <ComboBoxItem>Partial Match</ComboBoxItem>
+                <ComboBoxItem>Exact Match</ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="SearchButton" Content="Search" Click="SearchButton_Click" Padding="15,8" Margin="0,0,10,0"/>
+            <Button x:Name="SearchAllButton" Content="Search All" Click="SearchAllButton_Click" Padding="15,8" Margin="0,0,0,0" Background="Orange" Foreground="White"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="SelectAllButton" Content="Select All" Click="SelectAllButton_Click" Padding="10,5" Margin="0,0,5,0"/>
+            <Button x:Name="DeselectAllButton" Content="Deselect All" Click="DeselectAllButton_Click" Padding="10,5" Margin="0,0,10,0"/>
+            <TextBlock x:Name="SelectionStatus" Text="Selected: 0" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="DarkBlue" FontWeight="Bold"/>
+            <Separator Width="1" Margin="20,0,20,0"/>
+            <TextBlock Text="Mode:" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,10,0"/>
+            <RadioButton x:Name="NormalModeRadio" Content="Normal" IsChecked="True" VerticalAlignment="Center" Margin="0,0,15,0" GroupName="SearchInstallMode"/>
+            <RadioButton x:Name="SilentModeRadio" Content="Silent" VerticalAlignment="Center" GroupName="SearchInstallMode"/>
+        </StackPanel>
+
+        <TextBlock x:Name="StatusText" Text="Ready" TextWrapping="Wrap" Margin="0,0,0,10" Foreground="DarkGreen"/>
+
+        <DataGrid x:Name="PackagesGrid" Height="300" Background="White" BorderBrush="LightGray" BorderThickness="1" 
+                  Margin="0,0,0,10" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                  ItemsSource="{Binding SearchResults}">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected}" Width="60"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Version" Binding="{Binding Version}" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="100" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="InstallButton" Content="Install Selected Packages" Click="InstallButton_Click" Padding="15,8" Background="Green" Foreground="White" Margin="0,0,10,0"/>
+            <Button x:Name="UninstallButton" Content="Uninstall Selected Packages" Click="UninstallButton_Click" Padding="15,8" Background="Red" Foreground="White"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

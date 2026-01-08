@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="WinGetUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WinGetUI"
+    xmlns:views="clr-namespace:WinGetUI.Views"
+    Title="WinGetUI - Windows Package Manager GUI"
+    Height="800"
+    Width="1200"
+    WindowStartupLocation="CenterScreen"
+    Icon="/Assets/winget_logo.ico">
+    
+    <DockPanel LastChildFill="True">
+        <!-- Top Menu Bar -->
+        <Grid DockPanel.Dock="Top" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Column="0" x:Name="ThemeToggleButton" Content="🌙 Dark Mode" Click="ThemeToggleButton_Click" Padding="15,8" Margin="0,0,10,0" Background="{DynamicResource ThemeToggleButtonBrush}" Foreground="{DynamicResource TextBrush}"/>
+            <TextBlock Grid.Column="1" x:Name="ThemeStatusText" Text="Light Mode" VerticalAlignment="Center" FontWeight="Bold" Margin="10,0,0,0"/>
+            
+            <!-- Spacer Grid.Column="2" -->
+            
+            <Button Grid.Column="3" x:Name="AboutButton" Content="ℹ️ About" Click="AboutButton_Click" Padding="15,8" Background="{DynamicResource SecondaryBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource BorderBrush}"/>
+        </Grid>
+        
+        <!-- Status Bar Bottom -->
+        <Border DockPanel.Dock="Bottom" Background="{DynamicResource StatusBarBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" Padding="10,5">
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Connection Status -->
+                <TextBlock Grid.Column="0" x:Name="ConnectionStatusIndicator" Text="● Connected" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" FontSize="12" Margin="0,0,20,0"/>
+                
+                <!-- Progress Bar -->
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Background="Transparent">
+                    <TextBlock x:Name="OperationStatusText" Text="Ready" FontSize="11" Foreground="{DynamicResource DimTextBrush}"/>
+                    <DockPanel Background="Transparent">
+                        <TextBlock x:Name="OperationPercentageText" Text="0%" FontSize="11" Foreground="{DynamicResource DimTextBrush}" DockPanel.Dock="Right" Margin="10,0,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        <ProgressBar x:Name="OperationProgressBar" Height="6" Value="0" Maximum="100" Foreground="{DynamicResource InfoBrush}" Background="{DynamicResource TertiaryBrush}" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </StackPanel>
+                
+                <!-- Info -->
+                <TextBlock Grid.Column="2" x:Name="StatusInfoText" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="{DynamicResource DimTextBrush}" FontSize="11" Margin="20,0,0,0"/>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid>
+            <views:UnifiedView />
+        </Grid>
+    </DockPanel>
+</Window>
