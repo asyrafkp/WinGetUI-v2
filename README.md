@@ -29,6 +29,20 @@ A modern, feature-rich Windows GUI application for managing packages using the W
 - Quick installation from search results
 - Press Enter to search or use the Search button
 
+## Screenshots
+
+### 🖥️ Main Interface (Light Mode)
+![Main Interface - Light Mode](screenshots/01%20-%20Install%20Mode%20-%20light%20mode.jpg)
+
+### 🌙 Main Interface (Dark Mode)
+![Main Interface - Dark Mode](screenshots/02%20-%20Install%20Mode%20-%20dark%20mode.jpg)
+
+### 🔄 Update Management
+![Update Management](screenshots/03%20-%20Update%20Mode.jpg)
+
+### 🔍 Advanced Search
+![Advanced Search](screenshots/04%20-%20Search%20Mode%20-%20Ability%20to%20search%20all%20package%20manager.jpg)
+
 ## System Requirements
 
 - **Windows 10** (Build 19041) or later
